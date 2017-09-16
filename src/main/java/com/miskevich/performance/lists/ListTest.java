@@ -3,11 +3,13 @@ package com.miskevich.performance.lists;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class ListTest {
 
     private List<Integer> list;
     private final int ATTEMPTS = 10;
+    private Random random = new Random();
 
     public ListTest(List<Integer> list) {
         this.list = list;
@@ -30,7 +32,7 @@ public class ListTest {
             long start = System.currentTimeMillis();
 
             for (int j = 0; j < 10_000; j++) {
-                clone.add(clone.size() / 2, j);
+                clone.add(clone.size() / 2, random.nextInt());
             }
 
             long end = System.currentTimeMillis() - start;
@@ -52,7 +54,7 @@ public class ListTest {
             long start = System.currentTimeMillis();
 
             for (int j = 0; j < 10_000; j++) {
-                clone.add(0, j);
+                clone.add(0, random.nextInt());
             }
 
             long end = System.currentTimeMillis() - start;
@@ -74,7 +76,7 @@ public class ListTest {
             long start = System.currentTimeMillis();
 
             for (int j = 0; j < 1_000_000; j++) {
-                clone.add(j);
+                clone.add(random.nextInt());
             }
 
             long end = System.currentTimeMillis() - start;
